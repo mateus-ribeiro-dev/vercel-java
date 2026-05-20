@@ -7,6 +7,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ColaboradorDao {
     Connection minhaconexao;
@@ -80,5 +82,27 @@ public class ColaboradorDao {
             objColaborador.setCargo(rs.getString(5));
         }
         return objColaborador;
+    }
+
+    // Select All
+    public List<Colaborador> listarTodos() throws SQLException {
+        List<Colaborador> lista = new ArrayList<>();
+
+        PreparedStatement stmt = minhaconexao.prepareStatement("select * from colaborador");
+        ResultSet rs = stmt.executeQuery();
+
+        while (rs.next()) {
+            Colaborador objColaborador = new Colaborador();
+            objColaborador.setId(rs.getLong(1));
+            objColaborador.setregistroColab(rs.getString(2));
+            objColaborador.setNomeCompleto(rs.getString(3));
+            objColaborador.setDataNascimento(rs.getString(4));
+            objColaborador.setCargo(rs.getString(5));
+            lista.add(objColaborador);
+        }
+
+        rs.close();
+        stmt.close();
+        return lista;
     }
 }

@@ -99,7 +99,7 @@ public class CadastroDao {
     public List<Cadastro> listarTodos() throws SQLException {
         List<Cadastro> lista = new ArrayList<>();
 
-        PreparedStatement stmt = minhaConexao.prepareStatement("SELECT * FROM atendimento");
+        PreparedStatement stmt = minhaConexao.prepareStatement("SELECT * FROM cadastro");
         ResultSet rs = stmt.executeQuery();
 
         while (rs.next()) {

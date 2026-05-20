@@ -6,6 +6,7 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.*;
 
 import java.sql.SQLException;
+import java.util.List;
 
 @Path("/colaborador")
 public class ColaboradorResource {
@@ -20,6 +21,13 @@ public class ColaboradorResource {
         UriBuilder builder = uriInfo.getAbsolutePathBuilder();
         builder.path((colaborador.getNomeCompleto()));
         return Response.created(builder.build()).build();
+    }
+
+    // Listar todos
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Colaborador> listarTodosRs() throws ClassNotFoundException, SQLException {
+        return colaboradorBO.listarTodosBo();
     }
 
     // Buscar por ID

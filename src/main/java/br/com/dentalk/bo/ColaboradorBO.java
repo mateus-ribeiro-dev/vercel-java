@@ -4,6 +4,7 @@ import br.com.dentalk.dao.ColaboradorDao;
 import br.com.dentalk.entities.Colaborador;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public class ColaboradorBO {
 
@@ -35,5 +36,11 @@ public class ColaboradorBO {
         colaboradorDao = new ColaboradorDao();
         // regra de negócios
         colaboradorDao.deletar(id);
+    }
+
+    // selecionar todos
+    public List<Colaborador> listarTodosBo() throws SQLException, ClassNotFoundException {
+        colaboradorDao = new ColaboradorDao();
+        return colaboradorDao.listarTodos();
     }
 }
