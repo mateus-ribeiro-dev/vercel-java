@@ -4,6 +4,7 @@ import br.com.dentalk.dao.OngDao;
 import br.com.dentalk.entities.Ong;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public class OngBO {
 
@@ -35,5 +36,11 @@ public class OngBO {
         ongDao = new OngDao();
         // regra de negócios
         ongDao.deletar(id);
+    }
+
+    // selecionar todos
+    public List<Ong> listarTodosBo() throws SQLException, ClassNotFoundException {
+        ongDao = new OngDao();
+        return ongDao.listarTodos();
     }
 }

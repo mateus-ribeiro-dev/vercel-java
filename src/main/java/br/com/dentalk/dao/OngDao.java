@@ -7,6 +7,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class OngDao {
     Connection minhaConexao;
@@ -75,5 +77,26 @@ public class OngDao {
             objOng.setNomeFantasia(rs.getString(4));
         }
         return objOng;
+    }
+
+    // Select All
+    public List<Ong> listarTodos() throws SQLException {
+        List<Ong> lista = new ArrayList<>();
+
+        PreparedStatement stmt = minhaConexao.prepareStatement("SELECT * FROM ong");
+        ResultSet rs = stmt.executeQuery();
+
+        while (rs.next()) {
+            Ong objOng = new Ong();
+            objOng.setId(rs.getLong(1));
+            objOng.setCnpj(rs.getString(2));
+            objOng.setRazaoSocial(rs.getString(3));
+            objOng.setNomeFantasia(rs.getString(4));
+            lista.add(objOng);
+        }
+
+        rs.close();
+        stmt.close();
+        return lista;
     }
 }

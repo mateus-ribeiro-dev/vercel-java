@@ -6,6 +6,7 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.*;
 
 import java.sql.SQLException;
+import java.util.List;
 
 @Path("/ong")
 public class OngResource {
@@ -20,6 +21,13 @@ public class OngResource {
         UriBuilder builder = uriInfo.getAbsolutePathBuilder();
         builder.path((ong.getCnpj()));
         return Response.created(builder.build()).build();
+    }
+
+    // Listar todos
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Ong> listarTodosRs() throws ClassNotFoundException, SQLException {
+        return ongBO.listarTodosBo();
     }
 
     // Buscar por ID
