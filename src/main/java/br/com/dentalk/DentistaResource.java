@@ -6,6 +6,7 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.*;
 
 import java.sql.SQLException;
+import java.util.List;
 
 @Path("/dentista")
 public class DentistaResource {
@@ -19,6 +20,13 @@ public class DentistaResource {
         UriBuilder builder = uriInfo.getAbsolutePathBuilder();
         builder.path((dentista.getCpf()));
         return Response.created(builder.build()).build();
+    }
+
+    // Listar todos
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Dentista> listarTodosRs() throws ClassNotFoundException, SQLException {
+        return dentistaBO.listarTodosBo();
     }
 
     // Buscar por ID
