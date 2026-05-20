@@ -1,10 +1,10 @@
 package br.com.dentalk.bo;
 
-
 import br.com.dentalk.dao.PacienteDao;
 import br.com.dentalk.entities.Paciente;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public class PacienteBO {
 
@@ -36,5 +36,11 @@ public class PacienteBO {
         pacienteDao = new PacienteDao();
         // regra de negócios
         pacienteDao.deletar(id);
+    }
+
+    // selecionar todos
+    public List<Paciente> listarTodosBo() throws SQLException, ClassNotFoundException {
+        pacienteDao = new PacienteDao();
+        return pacienteDao.listarTodos();
     }
 }

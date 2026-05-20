@@ -7,6 +7,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PacienteDao {
     Connection minhaConexao;
@@ -95,5 +97,32 @@ public class PacienteDao {
             objPaciente.setRg(rs.getString(10));
         }
         return objPaciente;
+    }
+
+    // Select All
+    public List<Paciente> listarTodos() throws SQLException {
+        List<Paciente> lista = new ArrayList<>();
+
+        PreparedStatement stmt = minhaConexao.prepareStatement("SELECT * FROM paciente");
+        ResultSet rs = stmt.executeQuery();
+
+        while (rs.next()) {
+            Paciente objPaciente = new Paciente();
+            objPaciente.setId(rs.getLong(1));
+            objPaciente.setCpf(rs.getString(2));
+            objPaciente.setNomeCompleto(rs.getString(3));
+            objPaciente.setNomeSocial(rs.getString(4));
+            objPaciente.setDataNascimento(rs.getString(5));
+            objPaciente.setIdentidadeGenero(rs.getString(6));
+            objPaciente.setNomeMae(rs.getString(7));
+            objPaciente.setNomePai(rs.getString(8));
+            objPaciente.setNacionalidade(rs.getString(9));
+            objPaciente.setRg(rs.getString(10));
+            lista.add(objPaciente);
+        }
+
+        rs.close();
+        stmt.close();
+        return lista;
     }
 }
