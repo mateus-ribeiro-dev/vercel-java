@@ -4,6 +4,7 @@ import br.com.dentalk.dao.ContatoDao;
 import br.com.dentalk.entities.Contato;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public class ContatoBO {
 
@@ -35,5 +36,11 @@ public class ContatoBO {
         contatoDao = new ContatoDao();
         // regra de negócios
         contatoDao.deletar(id);
+    }
+
+    // selecionar todos
+    public List<Contato> listarTodosBo() throws SQLException, ClassNotFoundException {
+        contatoDao = new ContatoDao();
+        return contatoDao.listarTodos();
     }
 }
