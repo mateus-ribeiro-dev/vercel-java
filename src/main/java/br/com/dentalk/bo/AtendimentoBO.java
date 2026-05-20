@@ -38,6 +38,7 @@ public class AtendimentoBO {
         atendimentoDao.deletar(id);
     }
 
+    // selecionar todos
     public List<Atendimento> listarTodosBo() throws SQLException, ClassNotFoundException {
         atendimentoDao = new AtendimentoDao();
         return atendimentoDao.listarTodos();

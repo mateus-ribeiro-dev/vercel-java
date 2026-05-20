@@ -6,6 +6,7 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.*;
 
 import java.sql.SQLException;
+import java.util.List;
 
 @Path("/cadastro")
 public class CadastroResource {
@@ -20,6 +21,13 @@ public class CadastroResource {
         UriBuilder builder = uriInfo.getAbsolutePathBuilder();
         builder.path((cadastro.getNome()));
         return Response.created(builder.build()).build();
+    }
+
+    // Listar todos
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Cadastro> listarTodosRs() throws ClassNotFoundException, SQLException {
+        return cadastroBo.listarTodosBo();
     }
 
     // Buscar por ID

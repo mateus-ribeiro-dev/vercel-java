@@ -7,6 +7,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CadastroDao {
 
@@ -91,5 +93,31 @@ public class CadastroDao {
 
         }
         return objCadastro;
+    }
+
+    // Select All
+    public List<Cadastro> listarTodos() throws SQLException {
+        List<Cadastro> lista = new ArrayList<>();
+
+        PreparedStatement stmt = minhaConexao.prepareStatement("SELECT * FROM atendimento");
+        ResultSet rs = stmt.executeQuery();
+
+        while (rs.next()) {
+            Cadastro objCadastro = new Cadastro();
+            objCadastro = new Cadastro();
+            objCadastro.setId(rs.getLong(1));
+            objCadastro.setCategoria(rs.getString(2));
+            objCadastro.setStatus(rs.getString(3));
+            objCadastro.setNome(rs.getString(4));
+            objCadastro.setDataNascimento(rs.getString(5));
+            objCadastro.setCpf(rs.getString(6));
+            objCadastro.setEmail(rs.getString(7));
+            objCadastro.setTelefone(rs.getString(8));
+            lista.add(objCadastro);
+        }
+
+        rs.close();
+        stmt.close();
+        return lista;
     }
 }

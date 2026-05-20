@@ -5,6 +5,7 @@ import br.com.dentalk.entities.Cadastro;
 
 
 import java.sql.SQLException;
+import java.util.List;
 
 public class CadastroBo {
 
@@ -36,5 +37,11 @@ public class CadastroBo {
         cadastroDao = new CadastroDao();
         // regra de negócios
         cadastroDao.deletar(id);
+    }
+
+    // selecionar todos
+    public List<Cadastro> listarTodosBo() throws SQLException, ClassNotFoundException {
+        cadastroDao = new CadastroDao();
+        return cadastroDao.listarTodos();
     }
 }
