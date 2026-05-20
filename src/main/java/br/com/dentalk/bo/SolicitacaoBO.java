@@ -1,10 +1,10 @@
 package br.com.dentalk.bo;
 
-
 import br.com.dentalk.dao.SolicitacaoDao;
 import br.com.dentalk.entities.Solicitacao;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public class SolicitacaoBO {
 
@@ -36,5 +36,11 @@ public class SolicitacaoBO {
         solicitacaoDao = new SolicitacaoDao();
         // regra de negócios
         solicitacaoDao.deletar(id);
+    }
+
+    // selecionar todos
+    public List<Solicitacao> listarTodosBo() throws SQLException, ClassNotFoundException {
+        solicitacaoDao = new SolicitacaoDao();
+        return solicitacaoDao.listarTodos();
     }
 }
