@@ -1,0 +1,39 @@
+package br.com.dentalk.bo;
+
+import br.com.dentalk.dao.ContatoDao;
+import br.com.dentalk.entities.Contato;
+
+import java.sql.SQLException;
+
+public class ContatoBO {
+
+    ContatoDao contatoDao;
+
+    //Selecionar
+    public Contato buscarPorId(String id) throws SQLException, ClassNotFoundException {
+        contatoDao = new ContatoDao();
+        // regra de negócios
+        return contatoDao.selecionarPorId(id);
+    }
+
+    //inserir
+    public static void insertBo(Contato contato) throws SQLException, ClassNotFoundException {
+        ContatoDao contatoDao = new ContatoDao();
+        // regra de negócios
+        contatoDao.inserir(contato);
+    }
+
+    //atualizar
+    public void atualizarBo(Contato contato) throws SQLException, ClassNotFoundException {
+        contatoDao = new ContatoDao();
+        // regra de negócios
+        contatoDao.atualizar(contato);
+    }
+
+    //Deletar
+    public void deletarBo(String id) throws SQLException, ClassNotFoundException {
+        contatoDao = new ContatoDao();
+        // regra de negócios
+        contatoDao.deletar(id);
+    }
+}
