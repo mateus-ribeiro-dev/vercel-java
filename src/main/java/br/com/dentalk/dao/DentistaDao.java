@@ -93,7 +93,7 @@ public class DentistaDao {
     public List<Dentista> listarTodos() throws SQLException {
         List<Dentista> lista = new ArrayList<>();
 
-        PreparedStatement stmt = minhaConexao.prepareStatement("SELECT * FROM atendimento");
+        PreparedStatement stmt = minhaConexao.prepareStatement("SELECT * FROM dentista");
         ResultSet rs = stmt.executeQuery();
 
         while (rs.next()) {
