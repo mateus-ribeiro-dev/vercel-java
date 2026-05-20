@@ -7,6 +7,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class EnderecoDao {
     Connection minhaConexao;
@@ -90,5 +92,32 @@ public class EnderecoDao {
             objEndereco.setCep(rs.getString(9));
         }
         return objEndereco;
+    }
+
+    // Select All
+    public List<Endereco> listarTodos() throws SQLException {
+        List<Endereco> lista = new ArrayList<>();
+
+        PreparedStatement stmt = minhaConexao.prepareStatement("SELECT * FROM endereco");
+        ResultSet rs = stmt.executeQuery();
+
+        while (rs.next()) {
+            Endereco objEndereco = new Endereco();
+            objEndereco = new Endereco();
+            objEndereco.setId(rs.getLong(1));
+            objEndereco.setLogradouro(rs.getString(2));
+            objEndereco.setNumero(rs.getInt(3));
+            objEndereco.setComplemento(rs.getString(4));
+            objEndereco.setBairro(rs.getString(5));
+            objEndereco.setCidade(rs.getString(6));
+            objEndereco.setEstado(rs.getString(7));
+            objEndereco.setPais(rs.getString(8));
+            objEndereco.setCep(rs.getString(9));
+            lista.add(objEndereco);
+        }
+
+        rs.close();
+        stmt.close();
+        return lista;
     }
 }

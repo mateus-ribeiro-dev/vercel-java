@@ -4,6 +4,7 @@ import br.com.dentalk.dao.EnderecoDao;
 import br.com.dentalk.entities.Endereco;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public class EnderecoBO {
 
@@ -35,5 +36,11 @@ public class EnderecoBO {
         enderecoDao = new EnderecoDao();
         // regra de negócios
         enderecoDao.deletar(id);
+    }
+
+    // selecionar todos
+    public List<Endereco> listarTodosBo() throws SQLException, ClassNotFoundException {
+        enderecoDao = new EnderecoDao();
+        return enderecoDao.listarTodos();
     }
 }

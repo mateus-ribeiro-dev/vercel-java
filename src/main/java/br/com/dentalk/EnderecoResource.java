@@ -6,6 +6,7 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.*;
 
 import java.sql.SQLException;
+import java.util.List;
 
 @Path("/endereco")
 public class EnderecoResource {
@@ -20,6 +21,13 @@ public class EnderecoResource {
         UriBuilder builder = uriInfo.getAbsolutePathBuilder();
         builder.path((endereco.getCep()));
         return Response.created(builder.build()).build();
+    }
+
+    // Listar todos
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Endereco> listarTodosRs() throws ClassNotFoundException, SQLException {
+        return enderecoBO.listarTodosBo();
     }
 
     // Buscar por ID
