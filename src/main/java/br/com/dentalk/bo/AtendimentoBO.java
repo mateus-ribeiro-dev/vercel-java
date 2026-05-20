@@ -4,6 +4,7 @@ import br.com.dentalk.dao.AtendimentoDao;
 import br.com.dentalk.entities.Atendimento;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public class AtendimentoBO {
 
@@ -35,5 +36,10 @@ public class AtendimentoBO {
         atendimentoDao = new AtendimentoDao();
         // regra de negócios
         atendimentoDao.deletar(id);
+    }
+
+    public List<Atendimento> listarTodosBo() throws SQLException, ClassNotFoundException {
+        atendimentoDao = new AtendimentoDao();
+        return atendimentoDao.listarTodos();
     }
 }
