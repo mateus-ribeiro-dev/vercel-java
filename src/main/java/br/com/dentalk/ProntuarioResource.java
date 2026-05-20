@@ -6,6 +6,7 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.*;
 
 import java.sql.SQLException;
+import java.util.List;
 
 @Path("/prontuario")
 public class ProntuarioResource {
@@ -20,6 +21,13 @@ public class ProntuarioResource {
         UriBuilder builder = uriInfo.getAbsolutePathBuilder();
         builder.path((prontuario.getDiagnosticoCid()));
         return Response.created(builder.build()).build();
+    }
+
+    // Listar todos
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Prontuario> listarTodosRs() throws ClassNotFoundException, SQLException {
+        return prontuarioBO.listarTodosBo();
     }
 
     // Buscar por ID

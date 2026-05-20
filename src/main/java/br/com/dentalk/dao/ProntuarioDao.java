@@ -7,6 +7,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProntuarioDao {
     Connection minhaConexao;
@@ -77,5 +79,27 @@ public class ProntuarioDao {
             objProntuario.setStatusEvolucao(rs.getString(5));
         }
         return objProntuario;
+    }
+
+    // Select All
+    public List<Prontuario> listarTodos() throws SQLException {
+        List<Prontuario> lista = new ArrayList<>();
+
+        PreparedStatement stmt = minhaConexao.prepareStatement("SELECT * FROM prontuario");
+        ResultSet rs = stmt.executeQuery();
+
+        while (rs.next()) {
+            Prontuario objProntuario = new Prontuario();
+            objProntuario.setId(rs.getLong(1));
+            objProntuario.setDiagnosticoCid(rs.getString(2));
+            objProntuario.setProcedimento(rs.getString(3));
+            objProntuario.setObservacao(rs.getString(4));
+            objProntuario.setStatusEvolucao(rs.getString(5));
+            lista.add(objProntuario);
+        }
+
+        rs.close();
+        stmt.close();
+        return lista;
     }
 }

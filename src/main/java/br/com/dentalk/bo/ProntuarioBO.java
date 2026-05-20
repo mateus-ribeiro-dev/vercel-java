@@ -4,6 +4,7 @@ import br.com.dentalk.dao.ProntuarioDao;
 import br.com.dentalk.entities.Prontuario;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public class ProntuarioBO {
     ProntuarioDao prontuarioDao;
@@ -34,5 +35,11 @@ public class ProntuarioBO {
         prontuarioDao = new ProntuarioDao();
         // regra de negócios
         prontuarioDao.deletar(id);
+    }
+
+    // selecionar todos
+    public List<Prontuario> listarTodosBo() throws SQLException, ClassNotFoundException {
+        prontuarioDao = new ProntuarioDao();
+        return prontuarioDao.listarTodos();
     }
 }
