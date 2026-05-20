@@ -71,12 +71,12 @@ public class ContatoDao {
 
         if(rs.next()) {
             objContato = new Contato();
-            objContato.setNome(rs.getString(1));
-            objContato.setEmail(rs.getString(2));
-            objContato.setTelefone(rs.getString(3));
-            objContato.setAssunto(rs.getString(4));
-            objContato.setMensagem(rs.getString(5));
-            objContato.setContatoId(rs.getLong(6));
+            objContato.setContatoId(rs.getLong(1));
+            objContato.setNome(rs.getString(2));
+            objContato.setEmail(rs.getString(3));
+            objContato.setTelefone(rs.getString(4));
+            objContato.setAssunto(rs.getString(5));
+            objContato.setMensagem(rs.getString(6));
         }
         return objContato;
     }
@@ -90,12 +90,12 @@ public class ContatoDao {
 
         while (rs.next()) {
             Contato objContato = new Contato();
-            objContato.setNome(rs.getString(1));
-            objContato.setEmail(rs.getString(2));
-            objContato.setTelefone(rs.getString(3));
-            objContato.setAssunto(rs.getString(4));
-            objContato.setMensagem(rs.getString(5));
-            objContato.setContatoId(rs.getLong(6));
+            objContato.setContatoId(rs.getLong(1));
+            objContato.setNome(rs.getString(2));
+            objContato.setEmail(rs.getString(3));
+            objContato.setTelefone(rs.getString(4));
+            objContato.setAssunto(rs.getString(5));
+            objContato.setMensagem(rs.getString(6));
             lista.add(objContato);
         }
 
