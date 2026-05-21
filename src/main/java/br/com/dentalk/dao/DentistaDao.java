@@ -31,6 +31,7 @@ public class DentistaDao {
 
         stmt.execute();
         stmt.close();
+        minhaConexao.close();
 
         return  "Dentista cadastrado com sucesso!";
     }
@@ -42,6 +43,7 @@ public class DentistaDao {
 
         stmt.execute();
         stmt.close();
+        minhaConexao.close();
 
         return "Dentista Deletado com Sucesso!";
     }
@@ -63,6 +65,7 @@ public class DentistaDao {
 
         stmt.executeUpdate();
         stmt.close();
+        minhaConexao.close();
 
         return "Dentista Atualizado com Sucesso!";
     }
@@ -86,6 +89,7 @@ public class DentistaDao {
             objDentista.setCro(rs.getString(6));
             objDentista.setEspecialidade(rs.getString(7));
         }
+        minhaConexao.close();
         return objDentista;
     }
 
@@ -110,6 +114,7 @@ public class DentistaDao {
 
         rs.close();
         stmt.close();
+        minhaConexao.close();
         return lista;
     }
 }

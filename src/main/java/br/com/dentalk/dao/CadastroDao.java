@@ -36,6 +36,7 @@ public class CadastroDao {
 
         stmt.execute();
         stmt.close();
+        minhaConexao.close();
 
         return "Cadastro feito com sucesso!";
     }
@@ -47,6 +48,7 @@ public class CadastroDao {
 
         stmt.execute();
         stmt.close();
+        minhaConexao.close();
 
         return "Cadastro Deletado com Sucesso!";
     }
@@ -68,6 +70,7 @@ public class CadastroDao {
 
         stmt.executeUpdate();
         stmt.close();
+        minhaConexao.close();
 
         return "Cadastro Atualizado com Sucesso!";
     }
@@ -92,6 +95,7 @@ public class CadastroDao {
             objCadastro.setTelefone(rs.getString(8));
 
         }
+        minhaConexao.close();
         return objCadastro;
     }
 
@@ -118,6 +122,7 @@ public class CadastroDao {
 
         rs.close();
         stmt.close();
+        minhaConexao.close();
         return lista;
     }
 }

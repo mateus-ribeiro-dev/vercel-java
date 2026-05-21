@@ -32,6 +32,7 @@ public class SolicitacaoDao {
 
         stmt.execute();
         stmt.close();
+        minhaConexao.close();
 
         return  "Solicitacao cadastrado com sucesso!";
     }
@@ -43,6 +44,7 @@ public class SolicitacaoDao {
 
         stmt.execute();
         stmt.close();
+        minhaConexao.close();
 
         return "Solicitacao Deletado com Sucesso!";
     }
@@ -62,6 +64,7 @@ public class SolicitacaoDao {
 
         stmt.executeUpdate();
         stmt.close();
+        minhaConexao.close();
 
         return "Solicitacao Atualizado com Sucesso!";
     }
@@ -83,6 +86,7 @@ public class SolicitacaoDao {
             objSolicitacao.setStatus(rs.getString(5));
             objSolicitacao.setPrioridade(rs.getString(6));
         }
+        minhaConexao.close();
         return objSolicitacao;
     }
 
@@ -107,6 +111,7 @@ public class SolicitacaoDao {
 
         rs.close();
         stmt.close();
+        minhaConexao.close();
         return lista;
     }
 }

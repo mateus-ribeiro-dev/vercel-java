@@ -35,6 +35,7 @@ public class PacienteDao {
 
         stmt.execute();
         stmt.close();
+        minhaConexao.close();
 
         return  "Paciente cadastrado com sucesso!";
     }
@@ -46,6 +47,7 @@ public class PacienteDao {
 
         stmt.execute();
         stmt.close();
+        minhaConexao.close();
 
         return "Paciente Deletado com Sucesso!";
     }
@@ -71,6 +73,7 @@ public class PacienteDao {
 
         stmt.executeUpdate();
         stmt.close();
+        minhaConexao.close();
 
         return "Paciente Atualizado com Sucesso!";
     }
@@ -96,6 +99,7 @@ public class PacienteDao {
             objPaciente.setNacionalidade(rs.getString(9));
             objPaciente.setRg(rs.getString(10));
         }
+        minhaConexao.close();
         return objPaciente;
     }
 
@@ -123,6 +127,7 @@ public class PacienteDao {
 
         rs.close();
         stmt.close();
+        minhaConexao.close();
         return lista;
     }
 }

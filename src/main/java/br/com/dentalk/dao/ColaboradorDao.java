@@ -11,16 +11,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ColaboradorDao {
-    Connection minhaconexao;
+    Connection minhaConexao;
 
     public ColaboradorDao() throws SQLException, ClassNotFoundException {
-        this.minhaconexao = new ConexaoFactory().conexao();
+        this.minhaConexao = new ConexaoFactory().conexao();
     }
 
 
     // Insert / Inserir
     public String inserir(Colaborador colaborador) throws SQLException, ClassNotFoundException {
-        PreparedStatement stmt = minhaconexao.prepareStatement(
+        PreparedStatement stmt = minhaConexao.prepareStatement(
                 "INSERT INTO colaborador " +
                 "(registro_colab, nome_colab, dat_nascimento, cargo_colab) " +
                 "VALUES (?, ?, ?, ?)");
@@ -31,25 +31,27 @@ public class ColaboradorDao {
 
         stmt.execute();
         stmt.close();
-        minhaconexao.close();
+        minhaConexao.close();
 
         return  "Colaborador cadastrado com sucesso!";
     }
 
     // Delete
     public String deletar(String codigo) throws SQLException, ClassNotFoundException {
-        PreparedStatement stmt = minhaconexao.prepareStatement("Delete From colaborador where id =?");
+        PreparedStatement stmt = minhaConexao.prepareStatement("Delete From colaborador where id =?");
         stmt.setString(1, codigo);
 
         stmt.execute();
         stmt.close();
+        minhaConexao.close();
+
 
         return "Colaborador Deletado com Sucesso!";
     }
 
     // UpDate
     public String atualizar(Colaborador colaborador) throws SQLException, ClassNotFoundException {
-        PreparedStatement stmt = minhaconexao.prepareStatement
+        PreparedStatement stmt = minhaConexao.prepareStatement
                 ("update colaborador set nome_colab = ?, dat_nascimento = ?, cargo_colab = ?, registro_colab = ? where id = ?");
         stmt.setString(1, colaborador.getNomeCompleto());
         stmt.setString(2, colaborador.getDataNascimento());
@@ -59,7 +61,7 @@ public class ColaboradorDao {
 
         stmt.executeUpdate();
         stmt.close();
-        minhaconexao.close();
+        minhaConexao.close();
 
         return "Colaborador Atualizado com Sucesso!";
     }
@@ -68,7 +70,7 @@ public class ColaboradorDao {
     // Select / codigo
     public Colaborador selecionarPorId(String codigo) throws SQLException, ClassNotFoundException {
         Colaborador objColaborador = null;
-        PreparedStatement stmt = minhaconexao.prepareStatement("select * from colaborador where id = ?");
+        PreparedStatement stmt = minhaConexao.prepareStatement("select * from colaborador where id = ?");
         stmt.setString(1, codigo);
 
         ResultSet rs = stmt.executeQuery();
@@ -81,6 +83,7 @@ public class ColaboradorDao {
             objColaborador.setDataNascimento(rs.getString(4));
             objColaborador.setCargo(rs.getString(5));
         }
+        minhaConexao.close();
         return objColaborador;
     }
 
@@ -88,7 +91,7 @@ public class ColaboradorDao {
     public List<Colaborador> listarTodos() throws SQLException {
         List<Colaborador> lista = new ArrayList<>();
 
-        PreparedStatement stmt = minhaconexao.prepareStatement("select * from colaborador");
+        PreparedStatement stmt = minhaConexao.prepareStatement("select * from colaborador");
         ResultSet rs = stmt.executeQuery();
 
         while (rs.next()) {
@@ -103,6 +106,7 @@ public class ColaboradorDao {
 
         rs.close();
         stmt.close();
+        minhaConexao.close();
         return lista;
     }
 }

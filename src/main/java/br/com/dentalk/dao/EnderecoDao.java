@@ -35,6 +35,7 @@ public class EnderecoDao {
 
         stmt.execute();
         stmt.close();
+        minhaConexao.close();
 
         return  "Endereco cadastrado com sucesso!";
     }
@@ -46,6 +47,7 @@ public class EnderecoDao {
 
         stmt.execute();
         stmt.close();
+        minhaConexao.close();
 
         return "Endereco Deletado com Sucesso!";
     }
@@ -66,6 +68,7 @@ public class EnderecoDao {
 
         stmt.executeUpdate();
         stmt.close();
+        minhaConexao.close();
 
         return "Endereco Atualizado com Sucesso!";
     }
@@ -91,6 +94,7 @@ public class EnderecoDao {
             objEndereco.setPais(rs.getString(8));
             objEndereco.setCep(rs.getString(9));
         }
+        minhaConexao.close();
         return objEndereco;
     }
 
@@ -118,6 +122,7 @@ public class EnderecoDao {
 
         rs.close();
         stmt.close();
+        minhaConexao.close();
         return lista;
     }
 }

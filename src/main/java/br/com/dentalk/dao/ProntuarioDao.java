@@ -31,6 +31,7 @@ public class ProntuarioDao {
 
         stmt.execute();
         stmt.close();
+        minhaConexao.close();
 
         return  "Prontuario cadastrado com sucesso!";
     }
@@ -42,6 +43,7 @@ public class ProntuarioDao {
 
         stmt.execute();
         stmt.close();
+        minhaConexao.close();
 
         return "Prontuario Deletado com Sucesso!";
     }
@@ -58,6 +60,7 @@ public class ProntuarioDao {
 
         stmt.executeUpdate();
         stmt.close();
+        minhaConexao.close();
 
         return "Prontuario Atualizado com Sucesso!";
     }
@@ -78,6 +81,7 @@ public class ProntuarioDao {
             objProntuario.setObservacao(rs.getString(4));
             objProntuario.setStatusEvolucao(rs.getString(5));
         }
+        minhaConexao.close();
         return objProntuario;
     }
 
@@ -100,6 +104,7 @@ public class ProntuarioDao {
 
         rs.close();
         stmt.close();
+        minhaConexao.close();
         return lista;
     }
 }

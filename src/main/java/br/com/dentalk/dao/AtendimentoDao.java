@@ -34,6 +34,7 @@ public class AtendimentoDao {
 
         stmt.execute();
         stmt.close();
+        minhaConexao.close();
 
         return  "Atendimento cadastrado com sucesso!";
     }
@@ -45,6 +46,7 @@ public class AtendimentoDao {
 
         stmt.execute();
         stmt.close();
+        minhaConexao.close();
 
         return "Atendimento Deletado com Sucesso!!!";
     }
@@ -66,6 +68,7 @@ public class AtendimentoDao {
 
         stmt.executeUpdate();
         stmt.close();
+        minhaConexao.close();
 
         return "Atendimento Atualizado com Sucesso!!!";
     }
@@ -91,6 +94,7 @@ public class AtendimentoDao {
             objAtendimento.setObservacoes(rs.getString(7));
             objAtendimento.setPacientePresente(rs.getString(8));
         }
+        minhaConexao.close();
         return objAtendimento;
     }
 
@@ -116,6 +120,7 @@ public class AtendimentoDao {
 
         rs.close();
         stmt.close();
+        minhaConexao.close();
         return lista;
     }
 }

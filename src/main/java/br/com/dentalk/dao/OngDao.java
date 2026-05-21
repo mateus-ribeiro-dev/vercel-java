@@ -30,6 +30,7 @@ public class OngDao {
 
         stmt.execute();
         stmt.close();
+        minhaConexao.close();
 
         return  "Ong cadastrado com sucesso!";
     }
@@ -41,6 +42,7 @@ public class OngDao {
 
         stmt.execute();
         stmt.close();
+        minhaConexao.close();
 
         return "Ong Deletado com Sucesso!";
     }
@@ -57,6 +59,7 @@ public class OngDao {
 
         stmt.executeUpdate();
         stmt.close();
+        minhaConexao.close();
 
         return "Ong Atualizado com Sucesso!";
     }
@@ -76,6 +79,7 @@ public class OngDao {
             objOng.setRazaoSocial(rs.getString(3));
             objOng.setNomeFantasia(rs.getString(4));
         }
+        minhaConexao.close();
         return objOng;
     }
 
@@ -97,6 +101,7 @@ public class OngDao {
 
         rs.close();
         stmt.close();
+        minhaConexao.close();
         return lista;
     }
 }

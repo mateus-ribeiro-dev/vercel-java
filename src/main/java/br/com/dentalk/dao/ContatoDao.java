@@ -28,6 +28,7 @@ public class ContatoDao {
 
         stmt.execute();
         stmt.close();
+        minhaConexao.close();
 
         return  "Contato cadastrado com sucesso!";
     }
@@ -39,6 +40,7 @@ public class ContatoDao {
 
         stmt.execute();
         stmt.close();
+        minhaConexao.close();
 
         return "Contato Deletado com Sucesso!";
     }
@@ -56,6 +58,7 @@ public class ContatoDao {
 
         stmt.executeUpdate();
         stmt.close();
+        minhaConexao.close();
 
         return "Contato Atualizado com Sucesso!";
     }
@@ -78,6 +81,7 @@ public class ContatoDao {
             objContato.setAssunto(rs.getString(5));
             objContato.setMensagem(rs.getString(6));
         }
+        minhaConexao.close();
         return objContato;
     }
 
@@ -101,6 +105,7 @@ public class ContatoDao {
 
         rs.close();
         stmt.close();
+        minhaConexao.close();
         return lista;
     }
 }
