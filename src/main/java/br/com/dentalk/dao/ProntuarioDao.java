@@ -89,7 +89,7 @@ public class ProntuarioDao {
     public List<Prontuario> listarTodos() throws SQLException {
         List<Prontuario> lista = new ArrayList<>();
 
-        PreparedStatement stmt = minhaConexao.prepareStatement("SELECT * FROM prontuario");
+        PreparedStatement stmt = minhaConexao.prepareStatement("SELECT * FROM prontuario WHERE id IS NOT NULL");
         ResultSet rs = stmt.executeQuery();
 
         while (rs.next()) {

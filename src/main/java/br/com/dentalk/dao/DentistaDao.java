@@ -97,7 +97,7 @@ public class DentistaDao {
     public List<Dentista> listarTodos() throws SQLException {
         List<Dentista> lista = new ArrayList<>();
 
-        PreparedStatement stmt = minhaConexao.prepareStatement("SELECT * FROM dentista");
+        PreparedStatement stmt = minhaConexao.prepareStatement("SELECT * FROM dentista WHERE id IS NOT NULL");
         ResultSet rs = stmt.executeQuery();
 
         while (rs.next()) {

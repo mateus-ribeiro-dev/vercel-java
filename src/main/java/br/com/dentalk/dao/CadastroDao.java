@@ -103,7 +103,7 @@ public class CadastroDao {
     public List<Cadastro> listarTodos() throws SQLException {
         List<Cadastro> lista = new ArrayList<>();
 
-        PreparedStatement stmt = minhaConexao.prepareStatement("SELECT * FROM cadastro");
+        PreparedStatement stmt = minhaConexao.prepareStatement("SELECT * FROM cadastro WHERE id IS NOT NULL");
         ResultSet rs = stmt.executeQuery();
 
         while (rs.next()) {

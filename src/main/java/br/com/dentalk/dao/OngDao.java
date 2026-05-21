@@ -87,7 +87,7 @@ public class OngDao {
     public List<Ong> listarTodos() throws SQLException {
         List<Ong> lista = new ArrayList<>();
 
-        PreparedStatement stmt = minhaConexao.prepareStatement("SELECT * FROM ong");
+        PreparedStatement stmt = minhaConexao.prepareStatement("SELECT * FROM ong WHERE id IS NOT NULL");
         ResultSet rs = stmt.executeQuery();
 
         while (rs.next()) {

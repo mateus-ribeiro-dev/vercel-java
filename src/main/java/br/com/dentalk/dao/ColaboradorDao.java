@@ -91,7 +91,7 @@ public class ColaboradorDao {
     public List<Colaborador> listarTodos() throws SQLException {
         List<Colaborador> lista = new ArrayList<>();
 
-        PreparedStatement stmt = minhaConexao.prepareStatement("select * from colaborador");
+        PreparedStatement stmt = minhaConexao.prepareStatement("select * from colaborador WHERE id IS NOT NULL");
         ResultSet rs = stmt.executeQuery();
 
         while (rs.next()) {

@@ -102,7 +102,7 @@ public class AtendimentoDao {
     public List<Atendimento> listarTodos() throws SQLException {
         List<Atendimento> lista = new ArrayList<>();
 
-        PreparedStatement stmt = minhaConexao.prepareStatement("SELECT * FROM atendimento");
+        PreparedStatement stmt = minhaConexao.prepareStatement("SELECT * FROM atendimento WHERE id_consulta IS NOT NULL");
         ResultSet rs = stmt.executeQuery();
 
         while (rs.next()) {

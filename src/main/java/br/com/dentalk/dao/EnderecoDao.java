@@ -102,7 +102,7 @@ public class EnderecoDao {
     public List<Endereco> listarTodos() throws SQLException {
         List<Endereco> lista = new ArrayList<>();
 
-        PreparedStatement stmt = minhaConexao.prepareStatement("SELECT * FROM endereco");
+        PreparedStatement stmt = minhaConexao.prepareStatement("SELECT * FROM endereco WHERE id IS NOT NULL");
         ResultSet rs = stmt.executeQuery();
 
         while (rs.next()) {

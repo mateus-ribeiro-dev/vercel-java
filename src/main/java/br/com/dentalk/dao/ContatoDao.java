@@ -89,7 +89,7 @@ public class ContatoDao {
     public List<Contato> listarTodos() throws SQLException {
         List<Contato> lista = new ArrayList<>();
 
-        PreparedStatement stmt = minhaConexao.prepareStatement("SELECT * FROM contato");
+        PreparedStatement stmt = minhaConexao.prepareStatement("SELECT * FROM contato WHERE id IS NOT NULL");
         ResultSet rs = stmt.executeQuery();
 
         while (rs.next()) {

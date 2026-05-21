@@ -107,7 +107,7 @@ public class PacienteDao {
     public List<Paciente> listarTodos() throws SQLException {
         List<Paciente> lista = new ArrayList<>();
 
-        PreparedStatement stmt = minhaConexao.prepareStatement("SELECT * FROM paciente");
+        PreparedStatement stmt = minhaConexao.prepareStatement("SELECT * FROM paciente WHERE id IS NOT NULL");
         ResultSet rs = stmt.executeQuery();
 
         while (rs.next()) {
